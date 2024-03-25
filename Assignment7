@@ -1,0 +1,137 @@
+1)
+
+Public class Sort012 {
+Public static void sort012(int[] arr, int N) {
+Int low = 0, high = N – 1, mid = 0;
+
+While (mid <= high) {
+Switch (arr[mid]) {
+Case 0:
+Swap(arr, low++, mid++);
+Break;
+Case 1:
+Mid++;
+Break;
+Case 2:
+Swap(arr, mid, high--);
+Break;
+}
+}
+}
+
+Private static void swap(int[] arr, int I, int j) {
+Int temp = arr[i];
+Arr[i] = arr[j];
+Arr[j] = temp;
+
+}
+
+Public static void main(String[] args) {
+Int[] arr1 = {0, 2, 1, 2, 0};
+Int N1 = 5;
+Sort012(arr1, N1);
+System.out.println(“Sorted array 1:”);
+printArray(arr1);
+
+int[] arr2 = {0, 1, 0};
+int N2 = 3;
+sort012(arr2, N2);
+System.out.println(“Sorted array 2:”);
+printArray(arr2);
+}
+
+Private static void printArray(int[] arr) {
+For (int num : arr) {
+System.out.print(num + “ “);
+}
+System.out.println();
+}
+}
+
+2)
+public class MissingNumber {
+
+public static int missingNumber(int[] nums, int N) {
+// Calculate the sum of first N natural numbers
+int sum = (N * (N + 1)) / 2;
+// Subtract the sum of elements in the array
+for (int num : nums) {
+sum -= num;
+}
+// The remaining sum is the missing number
+return sum;
+}
+public static void main(String[] args) {
+int[] arr1 = {1, 2, 3, 5};
+int N1 = 5;
+System.out.println("Missing number in array 1: " + missingNumber(arr1, N1));
+int[] arr2 = {6, 1, 2, 8, 3, 4, 7, 10, 5};
+int N2 = 10;
+System.out.println("Missing number in array 2: " + missingNumber(arr2, N2));
+}
+}
+3.
+Public class MajorityElement {
+Public static int majorityElement(int[] nums, int N) {
+Int candidate = -1;
+Int count = 0;
+// Find the candidate for the majority element
+For (int num : nums) {
+If (count == 0) {
+Candidate = num;
+Count = 1;
+} else if (candidate == num) {
+Count++;
+} else {
+
+Count--;
+}
+}
+// Check if the candidate is the majority element
+Count = 0;
+For (int num : nums) {
+If (num == candidate) {
+Count++;
+}
+}
+Return count > N / 2 ? candidate : -1;
+}
+Public static void main(String[] args) {
+Int[] arr1 = {1, 2, 3};
+Int N1 = 3;
+System.out.println(“Majority element in array 1: “ + majorityElement(arr1, N1));
+Int[] arr2 = {3, 1, 3, 3, 2};
+Int N2 = 5;
+System.out.println(“Majority element in array 2: “ + majorityElement(arr2, N2));
+}
+}
+4.
+Import java.util.HashSet;
+Public class UnionOfArrays {
+Public static int doUnion(int a[], int n, int b[], int m) {
+HashSet<Integer> unionSet = new HashSet<>();
+// Add elements of array a[] to the union set
+For (int I = 0; I < n; i++) {
+unionSet.add(a[i]);
+}
+
+// Add elements of array b[] to the union set
+For (int I = 0; I < m; i++) {
+unionSet.add(b[i]);
+}
+// Return the size of the union set
+Return unionSet.size();
+}
+Public static void main(String[] args) {
+Int[] arr1 = {1, 2, 3, 4, 5};
+Int[] arr2 = {1, 2, 3};
+Int n = 5, m = 3;
+System.out.println(“Number of elements in the union set: “ + doUnion(arr1, n, arr2,
+m));
+Int[] arr3 = {6, 25, 1, 32, 54, 6};
+Int[] arr4 = {85, 2};
+N = 6; m = 2;
+System.out.println(“Number of elements in the union set: “ + doUnion(arr3, n, arr4,
+m));
+}
+}
