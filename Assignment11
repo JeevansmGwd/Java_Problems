@@ -1,0 +1,166 @@
+1)
+
+import java.util.Scanner;
+
+public class CelB {
+    static boolean isCelebrity(int[][] M, int person, int n) {
+        for (int i = 0; i < n; i++) {
+            if (M[person][i] == 1 || M[i][person] == 0)
+                return false;
+        }
+        return true;
+    }
+    
+   
+    static int findCelebrity(int[][] M, int n) {
+              for (int i = 0; i < n; i++) {
+            if (isCelebrity(M, i, n))
+                return i;
+        }
+        return -1; 
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter the size of the party: ");
+        int n = scanner.nextInt();
+        
+        int[][] M = new int[n][n];
+        
+        System.out.println("Enter the people at the party (0 or 1):");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                M[i][j] = scanner.nextInt();
+            }
+        }
+        
+        int celebrityIndex = findCelebrity(M, n);
+        if (celebrityIndex != -1)
+            System.out.println("Celebrity at index " + celebrityIndex);
+        else
+            System.out.println("No celebrity found.");
+        
+        scanner.close();
+    }
+}
+
+
+
+
+2)
+
+import java.util.Scanner;
+
+public class Main {
+    public static int isValid(String s) {
+               String[] parts = s.split("\\.");
+        
+             if (parts.length != 4)
+            return 0;
+        
+              for (String part : parts) {
+           
+            if (part.isEmpty() || (part.length() > 1 && part.charAt(0) == '0'))
+                return 0;
+            
+            try {
+                int num = Integer.parseInt(part);
+             
+                if (num < 0 || num > 255)
+                    return 0;
+            } catch (NumberFormatException e) {
+                              return 0;
+            }
+        }
+        
+        return 1;
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter the IPv4 address: ");
+        String ipAddress = scanner.nextLine();
+        
+        int result = isValid(ipAddress);
+        
+        if (result == 1)
+            System.out.println("Valid IPv4 address");
+        else
+            System.out.println("Invalid IPv4 address");
+        
+        scanner.close();
+    }
+}
+
+
+
+3)
+
+import java.util.Scanner;
+
+public class Main {
+    public static int[] findUnion(int[] arr1, int[] arr2, int n, int m) {
+              int maxSize = n + m;
+        int[] union = new int[maxSize];
+        
+              int i = 0, j = 0, k = 0;
+        
+      
+        while (i < n && j < m) {
+                     if (arr1[i] < arr2[j]) {
+                union[k++] = arr1[i++];
+            }
+                     else if (arr1[i] > arr2[j]) {
+                union[k++] = arr2[j++];
+            }
+                       else {
+                union[k++] = arr1[i++];
+                j++;
+            }
+        }
+        
+           while (i < n) {
+            union[k++] = arr1[i++];
+        }
+        
+      
+        while (j < m) {
+            union[k++] = arr2[j++];
+        }
+        
+        int[] result = new int[k];
+        System.arraycopy(union, 0, result, 0, k);
+        
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter the size of the first array: ");
+        int n = scanner.nextInt();
+        int[] arr1 = new int[n];
+        System.out.println("Enter the elements of the first array:");
+        for (int i = 0; i < n; i++) {
+            arr1[i] = scanner.nextInt();
+        }
+        
+        System.out.print("Enter the size of the second array: ");
+        int m = scanner.nextInt();
+        int[] arr2 = new int[m];
+        System.out.println("Enter the elements of the second array:");
+        for (int i = 0; i < m; i++) {
+            arr2[i] = scanner.nextInt();
+        }
+        
+        int[] union = findUnion(arr1, arr2, n, m);
+        System.out.print("Union of arrays: ");
+        for (int num : union) {
+            System.out.print(num + " ");
+        }
+        
+        scanner.close();
+    }
+}
