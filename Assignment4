@@ -1,0 +1,184 @@
+1)
+public class ZeroConverter {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+
+        if (n == 0) {
+            System.out.println("already Zero");
+        } else if (n > 0) {
+            for (int i = n - 1; i >= 0; i--) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
+        } else {
+            for (int i = n; i <= 0; i++) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+2)
+public class ATM {
+
+    private static final int INITIAL_PIN = 1234;
+    private static int balance = 0;
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("Enter your PIN: ");
+            int userPin = scanner.nextInt();
+
+            if (userPin == INITIAL_PIN) {
+                printMenu();
+
+                int choice = scanner.nextInt();
+
+                switch (choice) {
+                    case 1:
+                        deposit(scanner);
+                        break;
+                    case 2:
+                        withdraw(scanner);
+                        break;
+                    case 3:
+                        checkBalance();
+                        break;
+                    case 4:
+                        changePin(scanner);
+                        break;
+                    case 5:
+                        System.out.println("Thank you for using our ATM!");
+                        break;
+                    default:
+                        System.out.println("Invalid choice. Please try again.");
+                }
+            } else {
+                System.out.println("Invalid PIN. Please try again.");
+            }
+        }
+    }
+
+    private static void printMenu() {
+        System.out.println("1. Deposit");
+        System.out.println("2. Withdraw");
+        System.out.println("3. Balance enquiry");
+        System.out.println("4. PIN change");
+        System.out.println("5. Exit");
+    }
+
+    private static void deposit(Scanner scanner) {
+        System.out.print("Enter amount to deposit: ");
+        int amount = scanner.nextInt();
+
+        balance += amount;
+        System.out.println("Total available balance: " + balance);
+    }
+
+    private static void withdraw(Scanner scanner) {
+        System.out.print("Enter amount to withdraw: ");
+        int amount = scanner.nextInt();
+
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Total available balance: " + balance);
+        } else {
+            System.out.println("Insufficient balance");
+        }
+    }
+
+    private static void checkBalance() {
+        System.out.println("Balance: " + balance);
+    }
+
+    private static void changePin(Scanner scanner) {
+        System.out.print("Enter new PIN: ");
+        int newPin = scanner.nextInt();
+
+        INITIAL_PIN = newPin;
+        System.out.println("PIN changed successfully");
+    }
+}
+
+3)
+public class SumPrime {
+
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isSumPrime(int a, int b) {
+        return isPrime(a) && isPrime(b) && isPrime(a + b);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a: ");
+        int a = scanner.nextInt();
+
+        System.out.print("Enter b: ");
+        int b = scanner.nextInt();
+
+        boolean isSumPrime = isSumPrime(a, b);
+        if (isSumPrime) {
+            System.out.println("Yes
+
+4)
+public class StringTimes {
+
+    public static String stringTimes(String str, int n) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            result.append(str);
+        }
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(stringTimes("Hi", 2));  // Output: HiHi
+        System.out.println(stringTimes("Hi", 3));  // Output: HiHiHi
+        System.out.println(stringTimes("Hi", 1));  // Output: Hi
+    }
+}
+
+5)
+import java.util.Scanner;
+
+public class SeriesGenerator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int q = scanner.nextInt(); // Number of queries
+
+        for (int i = 0; i < q; i++) {
+            int a = scanner.nextInt(); // Initial value
+            int b = scanner.nextInt(); // Increment value
+            int n = scanner.nextInt(); // Number of terms
+
+            // Generate and print the series
+            for (int j = 0; j <= n; j++) {
+                int term = a + (int) Math.pow(2, j) * b;
+                System.out.print(term + " ");
+            }
+            System.out.println(); // New line for each query
+        }
+    }
+}
+
+
