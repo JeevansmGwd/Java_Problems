@@ -1,0 +1,106 @@
+1)
+import java.util.Scanner;
+public class Main
+{
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+System.out.println(&quot;Enter the value of a &quot;);
+int a = sc.nextInt();
+System.out.println(&quot;Enter the value of b &quot;);
+int b = sc.nextInt();
+boolean result=lastDigit(a,b);
+System.out.println(result);
+}
+static boolean lastDigit(int a, int b) {
+return (a % 10 == b % 10);
+}
+}
+
+2)
+import java.util.Scanner;
+public class Main
+{
+
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+System.out.println(&quot;Enter the value of n &quot;);
+int n = sc.nextInt();
+boolean result=EvenOdd(n);
+System.out.println(result);
+}
+static boolean EvenOdd(int n) {
+
+return (n%2==0);
+}
+//Here negative integers values can also be taken as an input.
+
+3)
+import java.util.Scanner;
+import java.lang.Math;
+public class Main
+{
+public static void main(String[] args) {
+double result=sumDouble();
+System.out.println((int) result);
+}
+static double sumDouble() {
+int a,b;
+Scanner sc = new Scanner(System.in);
+System.out.println(&quot;Enter the value of a &quot;);
+a = sc.nextInt();
+System.out.println(&quot;Enter the value of b &quot;);
+b = sc.nextInt();
+if(a==b)
+return (Math.pow(a,3));
+else
+return a+b;
+}
+}
+
+4)
+
+import java.util.Scanner;
+import java.lang.Math;
+
+public class Main
+{
+public static void main(String[] args) {
+int result=makes10();
+System.out.println(result);
+}
+static int makes10() {
+int a,b;
+Scanner sc = new Scanner(System.in);
+System.out.println(&quot;Enter the value of a &quot;);
+a = sc.nextInt();
+System.out.println(&quot;Enter the value of b &quot;);
+b = sc.nextInt();
+boolean output=(a==10 || b ==10 || a+b==10 )?(true):(false);
+boolean value=output?(true):(false);
+return a+b;
+}
+}
+
+5)
+
+import java.util.Scanner;
+import java.lang.Math;
+public class Main
+{
+
+public static void main(String[] args) {
+boolean result=makes10();
+System.out.println(result);
+}
+static boolean makes10() {
+
+int a,b;
+Scanner sc = new Scanner(System.in);
+System.out.println(&quot;Enter the value of a &quot;);
+a = sc.nextInt();
+System.out.println(&quot;Enter the value of b &quot;);
+b = sc.nextInt();
+boolean output=((a&gt;=10 || b&gt;=10) &amp;&amp; (a&lt;=20 || b&lt;=20))?(true):(false);
+return output;
+}
+}
