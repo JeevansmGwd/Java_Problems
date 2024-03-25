@@ -1,0 +1,228 @@
+1)
+import java.util.Scanner;
+
+public class Series {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the value of a: ");
+        int a = scanner.nextInt();
+
+        System.out.print("Enter the value of b: ");
+        int b = scanner.nextInt();
+
+        System.out.print("Enter the number of terms (n): ");
+        int n = scanner.nextInt();
+
+        printSeries(a, b, n);
+    }
+    public static void printSeries(int a, int b, int n) {
+        for (int i = 0; i < n; i++) {
+            int term = a;
+            for (int j = 0; j <= i; j++) {
+                term += b * Math.pow(2, j);
+            }
+            System.out.print(term + " ");
+        }
+    }
+}
+
+
+2)
+import java.util.Scanner;
+
+public class ReverseInteger {
+
+    public static int reverse(int x) {
+        int reversed = 0;
+        boolean negative = x < 0;
+        x = Math.abs(x); // Handle negative efficiently
+
+        while (x > 0) {
+            int digit = x % 10;
+          
+            if (reversed > Integer.MAX_VALUE / 10 || (reversed == Integer.MAX_VALUE / 10 && digit > 7)) {
+                return 0;
+            }
+            reversed = reversed * 10 + digit;
+            x /= 10;
+        }
+
+        return negative ? -reversed : reversed;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int x = scanner.nextInt();
+
+        int reversedX = reverse(x);
+
+        if (reversedX == 0) {
+            System.out.println("Overflow occurred.");
+        } else {
+            System.out.println("Reversed integer: " + reversedX);
+        }
+    }
+}
+
+3)
+public class BinaryNum {
+
+    public static void main(String[] args) {
+        int x = 234;
+        String binary = "";
+
+        while (x > 0) {
+            binary += x % 2;
+            x /= 2;
+        }
+
+        StringBuilder reversedBinary = new StringBuilder(binary).reverse();
+        System.out.println("Binary representation of " + x + ": " + reversedBinary);
+    }
+}
+
+
+4)
+import java.util.Scanner;
+
+public class BusTicket {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+      
+        do {
+            System.out.print("Enter the From stage number (1-10): ");
+            int fromStage = scanner.nextInt();
+            System.out.print("Enter the To stage number (1-10): ");
+            int toStage = scanner.nextInt();
+
+            if (fromStage <= 0 || fromStage > 10 || toStage <= 0 || toStage > 10 || fromStage > toStage) {
+                System.out.println("Invalid stage numbers. Please enter stages between 1 and 10, and To stage must be greater than or equal to From stage.");
+            } else {
+               
+                int numStages = toStage - fromStage + 1;
+                System.out.print("Enter the number of adult passengers: ");
+                int numAdults = scanner.nextInt();
+                System.out.print("Enter the number of child passengers: ");
+                int numChildren = scanner.nextInt();
+
+              
+                double adultCost = numAdults * numStages * 10.0;
+                double childCost = numChildren * numStages * 5.0;
+                double totalCost = adultCost + childCost;
+
+              
+                double discountPercentage = 0.0;
+                if (numAdults >= 5) {
+                    discountPercentage = 0.2;
+                } else if (numAdults == 4) {
+                    discountPercentage = 0.15;
+                } else if (numAdults == 3) {
+                    discountPercentage = 0.1;
+                } else if (numAdults == 2) {
+                    discountPercentage = 0.05;
+                }
+
+                double discountAmount = totalCost * discountPercentage;
+                double costAfterDiscount = totalCost - discountAmount;
+                double serviceCharge = costAfterDiscount * 0.05;
+                double finalTicketCost = costAfterDiscount + serviceCharge;
+
+               
+                System.out.println("\nTicket Details:");
+                System.out.printf("From stage: %d\n", fromStage);
+                System.out.printf("To stage: %d\n", toStage);
+                System.out.printf("Number of stages: %d\n", numStages);
+                System.out.printf("Number of adult passengers: %d\n", numAdults);
+                System.out.printf("Number of child passengers: %d\n", numChildren);
+                System.out.printf("Adult cost: ₹%.2f\n", adultCost);
+                System.out.printf("Child cost: ₹%.2f\n", childCost);
+                System.out.printf("Total cost before discount: ₹%.2f\n", totalCost);
+                System.out.printf("Discount applied (based on %d adults): %.2f%%\n", numAdults, discountPercentage * 100);
+                System.out.printf("Discount amount: ₹%.2f\n", discountAmount);
+                System.out.printf("Cost after discount: ₹%.2f\n", costAfterDiscount);
+                System.out.printf("Service charge (5%%): ₹%.2f\n", serviceCharge);
+                System.out.printf("Final ticket cost: ₹%.2f\n", finalTicketCost);
+                break; // Exit the loop after valid input
+            }
+        } while (true); // Repeat until valid input is provided
+    }
+}
+
+
+5) import java.util.Scanner;
+
+public class NearestPrime {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a positive integer: ");
+        int x = scanner.nextInt();
+
+        if (x <= 1) {
+            System.out.println("Prime numbers are defined for integers greater than 1.");
+            return;
+        }
+
+        int lessOrEqual = findNearestPrimeLessOrEqual(x);
+        if (isPrime(x)) {
+            System.out.println("Nearest prime to " + x + " is " + x);
+        } else {
+            int greaterThan = findNearestPrimeGreaterThan(x);
+            System.out.println("Nearest prime to " + x + " is " +
+                    ((Math.abs(x - lessOrEqual) <= Math.abs(x - greaterThan)) ? lessOrEqual : greaterThan));
+        }
+    }
+
+    private static int findNearestPrimeLessOrEqual(int x) {
+        if (x <= 2) {
+            return 2;
+        }
+        for (int i = 3; i <= x; i += 2) {
+            if (isPrime(i)) {
+                return i;
+            }
+        }
+        for (int i = x - 1; i >= 2; i -= 2) {
+            if (isPrime(i)) {
+                return i;
+            }
+        }
+        throw new RuntimeException("Unexpected error: No prime found less than or equal to " + x);
+    }
+
+    private static int findNearestPrimeGreaterThan(int x) {
+        if (x < 2) {
+            return 2;
+        }
+        for (int i = x + 1; ; i += 2) {
+            if (isPrime(i)) {
+                return i;
+            }
+        }
+    }
+
+    private static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        if (num <= 3) {
+            return true;
+        }
+        if (num % 2 == 0 || num % 3 == 0) {
+            return false;
+        }
+        for (int i = 5; i * i <= num; i += 6) {
+            if (num % i == 0 || num % (i + 2) == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
